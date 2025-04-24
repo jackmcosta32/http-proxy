@@ -1,21 +1,19 @@
 {
-  "name": "http-proxy",
-  "version": "1.0.0",
+  "name": "coding-challenge",
   "type": "module",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --env-file='.env' ./src/index.ts"
+    "dev": "pnpm run --parallel --filter \"./apps/**\" dev",
+    "build": "pnpm run --recursive --filter \"./apps/**\" build",
+    "test": "pnpm run --recursive --filter \"./apps/**\" test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.7.0",
-  "dependencies": {
-    "express": "^5.1.0"
-  },
   "devDependencies": {
-    "@types/express": "^5.0.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   }

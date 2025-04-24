@@ -1,4 +1,4 @@
-import express, { Router, Request, Response } from "express";
+import express, { Router, type Request, type Response } from "express";
 
 const app = express();
 const router = Router();
@@ -6,7 +6,7 @@ const router = Router();
 app.use(express.json());
 
 router.get("/", (req: Request, res: Response) => {
-    res.json({ message: "Hello from the proxy server!" });
+  res.json({ message: "Hello from the server!" });
 });
 
 app.use(router);
