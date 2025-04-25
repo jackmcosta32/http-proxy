@@ -1,6 +1,8 @@
 import cookieParser from "cookie-parser";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import express, { type Request, type Response } from "express";
+import { loggerMiddleware } from "./middlewares/logger.middleware";
+import { requestIdentifierMiddleware } from "./middlewares/request-identifier.middleware";
 
 const app = express();
 
@@ -10,6 +12,8 @@ const proxyMiddleware = createProxyMiddleware<Request, Response>({
 });
 
 app.use(cookieParser());
+app.use(loggerMiddleware);
+app.use(requestIdentifierMiddleware);
 app.use('/', proxyMiddleware);
 
 const port = process.env.PROXY_PORT ?? 3000;

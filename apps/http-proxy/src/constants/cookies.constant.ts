@@ -1,0 +1,1 @@
+export const REQUEST_IDENTIFIER_COOKIE = '__session-guid';
