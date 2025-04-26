@@ -1,10 +1,27 @@
 # Http Proxy Challenge
 
+## Description
+
+You'll create an HTTP reverse proxy that analyzes observed HTTP transactions for suspicious client activity. For simplicity, this can be limited to HTTP/1.1 without TLS, and you may assume the traffic is encrypted upstream and may contain credentials. In your solution, focus on simplicity, flexibility, practical utility, and performance.
+
 ## Requirement Analysis
 
 ### Functional Requirements
 
+- Implement an HTTP reverse proxy that analyzes observed HTTP transactions for suspicious client activity;
+- Flags requests as potentially malicious based on two or more heuristics;
+- Structure the proxy output to a log as machine-consumable data for analysis by a separate system.
+
 ### Non-Functional Requirements
+
+- Simplicity: Focus on a simple design.
+- Flexibility: The system should be flexible in how it flags malicious requests.
+- Performance: Should perform reasonably well even though it’s not required to handle production-scale traffic.
+- Language: You may use Python, JavaScript/TypeScript, Go, or C/C++.
+- Protocol limitations:
+    - Limit implementation to HTTP/1.1.
+    - No TLS handling is needed.
+- Logging format: Output must be structured and machine-consumable (e.g., JSON).
 
 ## How to run this project
 
@@ -28,10 +45,17 @@ Finally, access the application by opening the following URL in your browser:
 http://localhost:3000
 ```
 
+## TO-DO
+
+- Optimize docker images;
+- Flags requests as potentially malicious;
+- Implement more heuristics for maliciousness;
+- Increase test coverage.
+
 ## References
 
 - [Rate Limiting Algorithms explained with code](https://blog.algomaster.io/p/rate-limiting-algorithms-explained-with-code);
 - [Rate Limiting Design System Interview](https://www.youtube.com/watch?v=dpEOhfEEoyw);
 - [Reverse Proxy vs API Gateway vs Load Balancer](https://www.youtube.com/watch?v=RqfaTIWc3LQ);
 - [Microservices Correlation Id](https://hilton.org.uk/blog/microservices-correlation-id); 
-- [Dockerizing PNPM Workspaces](https://pnpm.io/next/docker);
+- [Dockerizing PNPM Workspaces](https://pnpm.io/next/docker).
