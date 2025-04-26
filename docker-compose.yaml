@@ -1,0 +1,29 @@
+services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+    networks:
+      - application-network
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+
+  proxy:
+    container_name: proxy
+    build:
+      context: .
+      dockerfile: apps/http-proxy/Dockerfile
+    depends_on:
+      - server
+    ports:
+      - '${PROXY_PORT}:3000'
+    networks:
+      - application-network
+    environment:
+      - PROXY_PORT=${PROXY_PORT}
+      - PROXY_TARGET_URL=${PROXY_TARGET_URL}
+
+networks:
+  application-network:
+    driver: bridge

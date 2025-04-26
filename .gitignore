@@ -3,3 +3,6 @@ node_modules
 
 # Ignores environment variable files
 .env
+
+# Build output directory
+dist

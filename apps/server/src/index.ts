@@ -5,7 +5,7 @@ const router = Router();
 
 app.use(express.json());
 
-router.get("/", (req: Request, res: Response) => {
+router.get("/{*splat}", (req: Request, res: Response) => {
   res.json({ message: "Hello from the server!" });
 });
 

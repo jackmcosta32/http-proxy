@@ -15,7 +15,7 @@ const proxyMiddleware = createProxyMiddleware<Request, Response>({
 app.use(cookieParser());
 app.use(loggerMiddleware);
 app.use(requestIdentifierMiddleware);
-app.use(requestRateLimitMiddleware);
+app.use(requestRateLimitMiddleware as never);
 app.use('/', proxyMiddleware);
 
 const port = process.env.PROXY_PORT ?? 3000;
