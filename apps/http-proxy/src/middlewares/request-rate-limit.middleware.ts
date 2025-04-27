@@ -1,7 +1,7 @@
 import { TokenBucket } from '@/data-structures/token-bucket';
 import type { NextFunction, Request, Response } from 'express';
-import { REQUEST_IDENTIFIER_COOKIE } from '@/constants/cookies.constant';
 import { TOO_MANY_REQUESTS } from '@/constants/http-status-code.constant';
+import { getRequestIdentifier } from '@/utils/session/get-request-identifier';
 
 const REQUEST_FILL_RATE = 5;
 const MAX_REQUESTS_PER_SECOND = 10;
@@ -9,8 +9,7 @@ const MAX_REQUESTS_PER_SECOND = 10;
 const buckets = new Map<string, TokenBucket>();
 
 export const requestRateLimitMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const ip = req.ip ?? req.socket.remoteAddress;
-  const requestIdentifier = ip ?? req.cookies[REQUEST_IDENTIFIER_COOKIE] as string;
+  const requestIdentifier = getRequestIdentifier(req);
 
   if (!requestIdentifier) return next();
 

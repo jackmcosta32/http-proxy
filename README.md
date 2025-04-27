@@ -34,7 +34,7 @@ $ cp .env.example .env
 Then, if you have docker installed on your machine, build the application containers with:
 
 ```sh
-docker compose up
+$ docker compose up
 ```
 
 **P.S.**: If necessary, use the --build flag to enforce docker compose to rebuild the image
@@ -47,10 +47,13 @@ http://localhost:3000
 
 ## TO-DO
 
-- Optimize docker images;
-- Flags requests as potentially malicious;
-- Implement more heuristics for maliciousness;
-- Increase test coverage.
+- [] Optimize docker images;
+- [X] Flags requests as potentially malicious;
+- [X] Implement more heuristics for maliciousness;
+- [] Increase test coverage;
+- [] Move blocklist to a NoSQL solution;
+- [] Move token bucket to a Redis/Mem Cache;
+- [] Add E2E tests.
 
 ## References
 
